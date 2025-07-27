@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/yanakukhta5/moex-candle-timer#readme",
   "devDependencies": {
-    "@types/node": "^24.1.0"
+    "@types/node": "^24.1.0",
+    "jsdoc": "^4.0.4"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.5",
