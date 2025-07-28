@@ -4,7 +4,9 @@
   "description": "Консольное приложение на NestJS, которое по расписанию \"каждый день в 6:00 утра\" скачивает с MOEX ISS почасовые свечи за предыдущий день и сохраняет в БД MSSQL.",
   "main": "index.js",
   "scripts": {
-    "start": "tsx watch src/index.ts"
+    "start": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start:prod": "node dist/main.js"
   },
   "repository": {
     "type": "git",
