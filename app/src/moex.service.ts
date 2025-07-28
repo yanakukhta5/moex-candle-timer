@@ -26,7 +26,7 @@ export class MoexService {
       const fromStr = from.toISOString();
       const tillStr = till.toISOString();
 
-      const url = `${this.baseUrl}/engines/stock/markets/shares/securities/${security}/candles.json`;
+      const url = `${this.baseUrl}/engines/${process.env.ENGINE}/markets/${process.env.MARKET}/securities/${process.env.SECURITY}/candles.json`;
       const params = {
         from: fromStr,
         till: tillStr,

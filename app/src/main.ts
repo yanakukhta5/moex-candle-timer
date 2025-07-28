@@ -1,5 +1,9 @@
+import * as dotenv from 'dotenv';
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+
+dotenv.config({ path: '../.env' });
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
@@ -13,7 +17,7 @@ async function bootstrap() {
     const from = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     const till = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
     
-    const candles = await moexService.getCandles('ROSN', from, till);
+    const candles = await moexService.getCandles(process.env.SECURITY, from, till);
     
   } catch (error) {
     console.error('Ошибка при получении свечей:', (error as Error).message);
@@ -22,4 +26,4 @@ async function bootstrap() {
   }
 }
 
-bootstrap(); 
+bootstrap()
