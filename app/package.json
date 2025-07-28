@@ -4,7 +4,7 @@
   "description": "Консольное приложение на NestJS, которое по расписанию \"каждый день в 6:00 утра\" скачивает с MOEX ISS почасовые свечи за предыдущий день и сохраняет в БД MSSQL.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx watch src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yanakukhta5/moex-candle-timer#readme",
   "devDependencies": {
+    "@types/mssql": "^9.1.7",
     "@types/node": "^24.1.0",
     "jsdoc": "^4.0.4"
   },
@@ -27,7 +28,9 @@
     "@nestjs/typeorm": "^11.0.0",
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
+    "mssql": "^11.0.1",
     "tedious": "^18.6.1",
+    "tsx": "^4.20.3",
     "typeorm": "^0.3.25"
   }
 }
