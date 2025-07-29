@@ -18,6 +18,9 @@
 - docker-compose stop app
 (Остановить контейнер node.js)
 
+- docker-compose exec mssql /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P "MyStr0ngP@ssword" -d "moex-candle" -No -Q "SELECT * FROM candles;"
+(Проверка заполненности ДБ)
+
 ## features
 
 - описание источника данных: https://iss.moex.com/iss/reference/341 ;

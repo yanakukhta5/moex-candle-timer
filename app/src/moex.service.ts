@@ -1,21 +1,50 @@
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 
+/**
+ * Интерфейс для представления свечи (candle) с биржи MOEX
+ */
 export interface Candle {
+  /** Цена открытия */
   open: number;
+  /** Цена закрытия */
   close: number;
+  /** Максимальная цена за период */
   high: number;
+  /** Минимальная цена за период */
   low: number;
+  /** Объем торгов в денежном выражении */
   value: number;
+  /** Объем торгов в количестве лотов */
   volume: number;
+  /** Время начала периода */
   begin: string;
+  /** Время окончания периода */
   end: string;
 }
 
+/**
+ * Сервис для работы с API Московской биржи (MOEX)
+ * Предоставляет методы для получения данных о свечах
+ */
 @Injectable()
 export class MoexService {
+  /**
+   * Базовый URL для API MOEX ISS
+   * @private
+   * @readonly
+   */
   private readonly baseUrl = 'https://iss.moex.com/iss';
 
+  /**
+   * Получает свечи для указанной ценной бумаги за заданный период
+   * @param security - Тикер ценной бумаги
+   * @param from - Начальная дата периода
+   * @param till - Конечная дата периода
+   * @param interval - Интервал свечей в минутах
+   * @returns Массив свечей
+   * @throws {Error} При ошибке запроса к API MOEX
+   */
   async getCandles(
     security: string,
     from: Date,
@@ -38,8 +67,6 @@ export class MoexService {
       console.log(`Параметры:`, params);
 
       const response = await axios.get(url, { params });
-
-      // console.log('Полученные данные: ', response.data);
 
       return response.data.candles;
       
