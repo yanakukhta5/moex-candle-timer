@@ -4,6 +4,9 @@
 .env.production
 .env.staging
 
+app/dist/
+app/node_modules/
+
 # Dependencies
 node_modules/
 npm-debug.log*

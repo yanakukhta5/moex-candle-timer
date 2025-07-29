@@ -24,5 +24,26 @@ services:
       - ./init-db.sql:/init-db.sql
     restart: "no"
 
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: moex_candle_timer
+    depends_on:
+      - mssql-init
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_SERVER=mssql
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - SECURITY=${SECURITY}
+      - ENGINE=${ENGINE}
+      - MARKET=${MARKET}
+    volumes:
+      - ./app:/app
+      - /app/node_modules
+    restart: unless-stopped
+
 volumes:
   mssql_data:

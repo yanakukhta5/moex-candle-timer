@@ -1,10 +1,8 @@
-import * as dotenv from 'dotenv';
 import * as sql from 'mssql';
+import cron from 'node-cron';
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-
-dotenv.config({ path: '../.env' });
 
 const config: sql.config = {
   user: process.env.DB_USER,
@@ -105,4 +103,6 @@ async function bootstrap() {
   }
 }
 
-bootstrap()
+cron.schedule('* * * * *', () => {
+  bootstrap()
+});
