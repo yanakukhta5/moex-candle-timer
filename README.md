@@ -1,11 +1,22 @@
-
 # moex-candle-timer
 
 Консольное приложение на NestJS, которое по расписанию "каждый день в 6:00 утра" скачивает с MOEX ISS почасовые свечи за предыдущий день и сохраняет в БД MSSQL.
 
-## Запуск
+## Запуск приложения
 
-docker-compose up -d  
+- docker-compose up -d
+
+## Остановка приложения
+
+- docker-compose down -v
+
+## Дополнительные команды
+
+- docker-compose up -d --build app
+(Пересобрать контейнер nest.js приложения)
+
+- docker-compose stop app
+(Остановить контейнер node.js)
 
 ## features
 
@@ -22,4 +33,3 @@ docker-compose up -d
 ## Пример вызова
 
 GET https://iss.moex.com/iss/engines/stock/markets/shares/securities/ROSN/candles?from=2025-07-24%2000:00:00&till=2025-07-24%2023:00:00&interval=60
-
