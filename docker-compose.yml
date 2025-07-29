@@ -3,9 +3,9 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: mssql_server
     ports:
-      - "1433:1433"
+      - "${DB_PORT}:${DB_PORT}"
     environment:
-      SA_PASSWORD: "MyStr0ngP@ssword"
+      SA_PASSWORD: ${DB_PASSWORD}
       ACCEPT_EULA: "Y"
     volumes:
       - mssql_data:/var/opt/mssql
@@ -18,7 +18,7 @@ services:
     entrypoint: >
       bash -c "
         sleep 20 &&
-        /opt/mssql-tools18/bin/sqlcmd -S mssql -U SA -P 'MyStr0ngP@ssword' -No -i /init-db.sql
+        /opt/mssql-tools18/bin/sqlcmd -S mssql -U SA -P '${DB_PASSWORD}' -No -i /init-db.sql
       "
     volumes:
       - ./init-db.sql:/init-db.sql

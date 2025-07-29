@@ -39,9 +39,9 @@ export class MoexService {
 
       const response = await axios.get(url, { params });
 
-      console.log('Полученные данные: ', response.data);
+      // console.log('Полученные данные: ', response.data);
 
-      return response.data;
+      return response.data.candles;
       
     } catch (error) {
       if (axios.isAxiosError(error)) {
